@@ -47,9 +47,44 @@ class HomePage(webapp2.RequestHandler):
     def post(self):
         if self.request.get("logout") == "Log Out":
             self.redirect("/")
+class IanthePage(webapp2.RequestHandler):
+    def get(self):
+        ianthe_template = \
+                jinja_current_directory.get_template('templates/ianthe.html')
+        self.response.write(ianthe_template.render())
+    def post(self):
+        self.redirect("/home?current_user=" + self.request.get("current_user"))
+
+class RuthvenPage(webapp2.RequestHandler):
+    def get(self):
+        ruthven_template = \
+                jinja_current_directory.get_template('templates/ruthven.html')
+        self.response.write(ruthven_template.render())
+    def post(self):
+        self.redirect("/home?current_user=" + self.request.get("current_user"))
+
+class MaubreyPage(webapp2.RequestHandler):
+    def get(self):
+        maubrey_template = \
+                jinja_current_directory.get_template('templates/maubrey.html')
+        self.response.write(maubrey_template.render())
+    def post(self):
+        self.redirect("/home?current_user=" + self.request.get("current_user"))
+
+class FaubreyPage(webapp2.RequestHandler):
+    def get(self):
+        faubrey_template = \
+                jinja_current_directory.get_template('templates/faubrey.html')
+        self.response.write(faubrey_template.render())
+    def post(self):
+        self.redirect("/home?current_user=" + self.request.get("current_user"))
 
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/loginerror', LoginErrorPage),
-    ('/home', HomePage)
+    ('/home', HomePage),
+    ('/ianthe', IanthePage),
+    ('/ruthven', RuthvenPage),
+    ('/maubrey', MaubreyPage),
+    ('/faubrey', FaubreyPage)
 ], debug=True)
