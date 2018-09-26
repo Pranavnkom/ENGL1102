@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <style>
+    #all,
+    #all div {
+      height: auto;
+      width: auto;
+      background-color: white;
+      border-radius: 15px;
+      margin: 30px;
+      border: 35px;
+      border-color: white;
+      padding: 15px;
+      align-content: space-around;
+
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      background-repeat: repeat-x;
+      background-size: cover;
+      background-image: url('http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/06/blue-abstract-uhd-wallpaper_1_1920x1080.jpg');
+    }
+
+    label{
+      font-family: "Palatino", serif;
+      color: black;
+    }
+
+    #heading{
+      text-align: center;
+      font-family: "Palatino", serif;
+      font-size: 15px;
+      margin-top: 0px;
+    }
+
+    [type=submit] {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 13px;
+
+    text-decoration: none;
+    margin: 3px 1px;
+    cursor: pointer;
+    }
+
+    [type=text] {
+    background-color: #ffffff;
+    border-bottom: 1px solid black;
+    border-style: hidden hidden inset hidden;
+    font-size: large;
+    }
+
+    [type=password] {
+    background-color: #ffffff;
+    border-bottom: 1px solid black;
+    border-style: hidden hidden inset hidden;
+    font-size: large;
+    }
+
+    input {
+    text-align: center;
+}
+    </style>
+  </head>
+  <body>
+
+    <div id='all'>
+      <div id='heading'>
+        <img src='https://pbs.twimg.com/profile_images/857253330791395330/ztj1ZDlf_400x400.jpg' height="200" width="200">
+        <h1> Europol Agent Login </h1>
+      </div>
+      <div style="text-align: center">
+        <form method='post'>
+          <input type='text' placeholder='username' name='username'> <br>
+          <input type='password' placeholder='password' name='password'><br>
+          <br>
+
+          <input type='submit' class='button' value='Submit'>
+          <p style="color:red">Invalid Credentials</p>
+
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
