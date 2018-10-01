@@ -101,56 +101,27 @@ tbody:hover > tr:hover td {
   </head>
   <body>
   <div>
-  <h1 style="text-align:center; font-family: 'Palatino', serif; font-size: 75px; color:white;">Welcome Agent {{logged.last_name}}</h1>
-  </div>
-  <div>
   <table>
   <tr>
-    <th>Case Number and Incident Summary</th>
+    <th>Subject</th>
     <th>Date</th>
-    <th>City</th>
-    <th>Country</th>
-    <th>Victim Name</th>
-    <th>Event</th>
-
+    <th>From</th>
   </tr>
   <tr>
-    <td><a href="/ianthe?current_user={{logged.username}}">90123</a></td>
-    <td>September 1st 2018</td>
-    <td>Athens</td>
-    <td>Greece</td>
-    <td>Ianthe Afroudakis</td>
-    <td>Murder</td>
-  </tr>
-  <tr>
-    <td><a href="/ruthven?current_user={{logged.username}}">90127</a></td>
-    <td>September 10th 2018</td>
-    <td>Near Volos</td>
-    <td>Greece</td>
-    <td>John Ruthven</td>
-    <td>Murder and Robbery</td>
-  </tr>
-  <tr>
-    <td><a href="/maubrey?current_user={{logged.username}}">93138</a></td>
+    <td><a href="/british?current_user={{logged.username}}">British Approval</a></td>
     <td>September 11th 2019</td>
-    <td>London</td>
-    <td>United Kingdom</td>
-    <td>William Aubrey</td>
-    <td>Stroke</td>
+    <td>Director</td>
   </tr>
   <tr>
-    <td><a href="/faubrey?current_user={{logged.username}}">93139</a></td>
-    <td>September 11th 2019</td>
-    <td>London</td>
-    <td>United Kingdom</td>
-    <td>Emma Aubrey</td>
-    <td>Murder</td>
+    <td><a href="/password?current_user={{logged.username}}">Email Password</a></td>
+    <td>September 13th 2019</td>
+    <td>Director</td>
   </tr>
 </table>
 </div>
 <div style="text-align: center">
 <form method='post'>
-  <input type='submit' class='button' name="messages" value='Messages'>
+  <input type='submit' class='button' name="records" value='Go Back to Records'>
 </form>
 <form method='post'>
   <input type='submit' class='button' name="logout" value='Log Out'>

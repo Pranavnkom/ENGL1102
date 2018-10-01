@@ -47,6 +47,9 @@ class HomePage(webapp2.RequestHandler):
     def post(self):
         if self.request.get("logout") == "Log Out":
             self.redirect("/")
+        if self.request.get("messages") == "Messages":
+            self.redirect("/messages?current_user=" + self.request.get("current_user"))
+
 class IanthePage(webapp2.RequestHandler):
     def get(self):
         ianthe_template = \
@@ -79,6 +82,95 @@ class FaubreyPage(webapp2.RequestHandler):
     def post(self):
         self.redirect("/home?current_user=" + self.request.get("current_user"))
 
+class MessagesPage(webapp2.RequestHandler):
+    def get(self):
+        messages_template = \
+                jinja_current_directory.get_template('templates/messages.html')
+        token = self.request.get("current_user")
+        logged = Accounts.query(Accounts.username == token).get()
+        current_account = {"logged":logged}
+        self.response.write(messages_template.render(current_account))
+    def post(self):
+        if self.request.get("logout") == "Log Out":
+            self.redirect("/")
+        if self.request.get("records") == "Go Back to Records":
+            self.redirect("/home?current_user=" + self.request.get("current_user"))
+
+class PasswordPage(webapp2.RequestHandler):
+    def get(self):
+        password_template = \
+                jinja_current_directory.get_template('templates/password.html')
+        token = self.request.get("current_user")
+        logged = Accounts.query(Accounts.username == token).get()
+        current_account = {"logged":logged}
+        self.response.write(password_template.render(current_account))
+    def post(self):
+        self.redirect("/messages?current_user=" + self.request.get("current_user"))
+
+class BritishPage(webapp2.RequestHandler):
+    def get(self):
+        british_template = \
+                jinja_current_directory.get_template('templates/british.html')
+        self.response.write(british_template.render())
+    def post(self):
+        self.redirect("/messages?current_user=" + self.request.get("current_user"))
+
+class ELoginPage(webapp2.RequestHandler):
+    def get(self):
+        elogin_template = \
+                jinja_current_directory.get_template('templates/elogin.html')
+        self.response.write(elogin_template.render())
+    def post(self):
+        if self.request.get('but') == "Go Back":
+            self.redirect("/home?current_user=" + self.request.get("current_user"))
+        else:
+            username = "eaubrey" == self.request.get("username")
+            password = "polidori" == self.request.get("password")
+            if username and password:
+                self.redirect("/ehome?current_user=" + self.request.get("current_user"))
+            else:
+                self.redirect("/eloginerr?current_user=" + self.request.get("current_user"))
+
+class ELoginErrPage(webapp2.RequestHandler):
+    def get(self):
+        elogin_template = \
+                jinja_current_directory.get_template('templates/eloginerr.html')
+        self.response.write(elogin_template.render())
+    def post(self):
+        if self.request.get('but') == "Go Back":
+            self.redirect("/home?current_user=" + self.request.get("current_user"))
+        else:
+            username = "eaubrey" == self.request.get("username")
+            password = "polidori" == self.request.get("password")
+            if username and password:
+                self.redirect("/ehome?current_user=" + self.request.get("current_user"))
+            else:
+                self.redirect("/eloginerr?current_user=" + self.request.get("current_user"))
+
+class EHomePage(webapp2.RequestHandler):
+    def get(self):
+        home_template = \
+                jinja_current_directory.get_template('templates/ehome.html')
+        token = self.request.get("current_user")
+        logged = Accounts.query(Accounts.username == token).get()
+        current_account = {"logged":logged}
+        self.response.write(home_template.render(current_account))
+
+    def post(self):
+        self.redirect("/elogin?current_user=" + self.request.get("current_user"))
+
+class UnreadPage(webapp2.RequestHandler):
+    def get(self):
+        unread_template = \
+                jinja_current_directory.get_template('templates/unread.html')
+        token = self.request.get("current_user")
+        logged = Accounts.query(Accounts.username == token).get()
+        current_account = {"logged":logged}
+        self.response.write(unread_template.render(current_account))
+    def post(self):
+        self.redirect("/ehome?current_user=" + self.request.get("current_user"))
+
+
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/loginerror', LoginErrorPage),
@@ -86,5 +178,12 @@ app = webapp2.WSGIApplication([
     ('/ianthe', IanthePage),
     ('/ruthven', RuthvenPage),
     ('/maubrey', MaubreyPage),
-    ('/faubrey', FaubreyPage)
+    ('/faubrey', FaubreyPage),
+    ('/messages', MessagesPage),
+    ('/password', PasswordPage),
+    ('/british', BritishPage),
+    ('/elogin', ELoginPage),
+    ('/eloginerr', ELoginErrPage),
+    ('/ehome', EHomePage),
+    ('/unread', UnreadPage)
 ], debug=True)

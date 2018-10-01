@@ -6,6 +6,7 @@
     <style>
     #all,
     #all div {
+
       height: auto;
       width: auto;
       background-color: white;
@@ -22,10 +23,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: black;
+      background-image: url('https://media.gettyimages.com/photos/gray-abstract-background-picture-id544329594?b=1&k=6&m=544329594&s=612x612&w=0&h=7oyGrcMgYjb0tOdhKHtRMWbp-Mn5hodCpgfGxIVm8Fc=');
       background-repeat: repeat-x;
       background-size: cover;
-      background-image: url('http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/06/blue-abstract-uhd-wallpaper_1_1920x1080.jpg');
     }
 
     label{
@@ -74,20 +74,20 @@
 
     <div id='all'>
       <div id='heading'>
-        <p>Disclaimer: This website has no affiliation with Europol or any European Union agencies. This website's sole purpose is educational.</p>
+        <p>You have been securely connected to this third-party website through Europol. Click on the button below to go back to the Europol website.</p>
         <br>
-        <img src='https://pbs.twimg.com/profile_images/857253330791395330/ztj1ZDlf_400x400.jpg' height="200" width="200">
-        <h1> Europol Agent Login </h1>
+        <form method='post'>
+          <input type='submit' class='button' name='but'  value='Go Back'>
+        </form>
+        <h1> TechMail Login </h1>
       </div>
       <div style="text-align: center">
         <form method='post'>
           <input type='text' placeholder='username' name='username'> <br>
           <input type='password' placeholder='password' name='password'><br>
           <br>
-
           <input type='submit' class='button' value='Submit'>
-          <p style="color:red">Invalid Credentials</p>
-
+          <p style="color:white">Invalid Credentials</p>
         </form>
       </div>
     </div>
